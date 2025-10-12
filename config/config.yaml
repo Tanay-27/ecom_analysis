@@ -1,0 +1,165 @@
+# Ecommerce Analysis Configuration File
+
+# Data Processing Configuration
+data_processing:
+  date_format: "%d-%m-%Y %H:%M"
+  min_date: "2018-01-01"
+  max_date: "2025-12-31"
+  return_threshold_days: 30
+  outlier_threshold: 3.0
+  missing_value_strategy: "interpolate"
+  deduplication_strategy: "keep_first"
+
+# Feature Engineering Configuration
+feature_engineering:
+  lag_periods: [1, 7, 14, 30, 90]
+  rolling_windows: [7, 14, 30, 90]
+  seasonal_periods: [12, 52]
+  interaction_features: true
+  polynomial_features: false
+  feature_selection_k: 50
+  scaling_method: "standard"
+  encoding_method: "onehot"
+
+# Modeling Configuration
+modeling:
+  test_size: 0.2
+  validation_size: 0.1
+  cv_folds: 5
+  random_state: 42
+  n_trials: 100
+  time_series_models: ["prophet", "arima", "exponential_smoothing"]
+  ml_models: ["random_forest", "xgboost", "lightgbm", "linear_regression"]
+  ensemble_method: "weighted_average"
+  confidence_level: 0.95
+  forecast_horizon: 30
+  seasonality_mode: "multiplicative"
+
+# Inventory Optimization Configuration
+optimization:
+  service_level: 0.95
+  lead_time_days: 7
+  review_period_days: 30
+  carrying_cost_rate: 0.25
+  stockout_cost_multiplier: 2.0
+  return_penalty_rate: 0.1
+  safety_stock_multiplier: 1.65
+  min_stock_days: 7
+  max_stock_days: 90
+  seasonal_adjustment_factor: 1.2
+  bundle_discount_factor: 0.9
+  high_return_threshold: 0.4
+  low_demand_threshold: 10
+  high_demand_threshold: 1000
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+  reload: true
+  log_level: "info"
+  cors_origins: ["*"]
+  cors_methods: ["*"]
+  cors_headers: ["*"]
+
+# Dashboard Configuration
+dashboard:
+  host: "127.0.0.1"
+  port: 8050
+  debug: true
+  theme: "bootstrap"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/ecommerce_analysis.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# File Paths
+paths:
+  data_dir: "data"
+  models_dir: "models"
+  reports_dir: "reports"
+  logs_dir: "logs"
+  output_dir: "output"
+
+# Business Rules
+business_rules:
+  # Festival periods (month-day format)
+  festivals:
+    diwali:
+      start_month: 10
+      start_day: 15
+      end_month: 11
+      end_day: 1
+    big_billion_days:
+      start_month: 10
+      start_day: 15
+      end_month: 10
+      end_day: 25
+    amazon_prime_day:
+      start_month: 7
+      start_day: 10
+      end_month: 7
+      end_day: 20
+  
+  # Policy change dates
+  policy_changes:
+    amazon_policy_change: "2024-11-01"
+  
+  # High-performing categories (get priority bonus)
+  high_performance_categories:
+    - "SEWING MACHINE"
+    - "DRILL KIT"
+    - "ROOM HEATER"
+  
+  # High-volume states (get priority bonus)
+  high_volume_states:
+    - "Maharashtra"
+    - "Karnataka"
+    - "Tamil Nadu"
+  
+  # Risk thresholds
+  risk_thresholds:
+    high_return_risk: 0.4
+    medium_return_risk: 0.2
+    high_stockout_risk: 0.7
+    high_overstock_risk: 0.7
+
+# Model Parameters
+model_parameters:
+  prophet:
+    seasonality_mode: "multiplicative"
+    yearly_seasonality: true
+    weekly_seasonality: true
+    daily_seasonality: false
+    changepoint_prior_scale: 0.05
+    seasonality_prior_scale: 10.0
+  
+  arima:
+    max_p: 3
+    max_d: 2
+    max_q: 3
+  
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_split: 2
+    min_samples_leaf: 1
+  
+  xgboost:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+  
+  lightgbm:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
