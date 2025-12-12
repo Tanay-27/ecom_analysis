@@ -1,0 +1,16 @@
+sku,current_stock,predicted_daily_demand,reorder_point,safety_stock,moq,lead_time_days,days_remaining,needs_reorder,recommended_order_qty,order_priority
+LRM02,391,46.89,890,187,421,15,8.3,True,1719,High
+CMSM01C,690,87.25,1656,348,785,15,7.9,True,3236,High
+CMSM01A,435,55.07,1046,220,495,15,7.9,True,2043,High
+JSD-02,61,7.86,109,31,117,10,7.8,True,253,High
+LRM021,83,10.06,140,40,150,10,8.3,True,319,High
+HY628,33,3.37,46,13,50,10,9.8,True,101,High
+LSG01,35,3.98,54,15,59,10,8.8,True,124,High
+LPB01BL,19,2.2,29,8,32,10,8.6,True,68,High
+CMSM06A1,77,12.06,168,48,180,10,6.4,True,405,High
+LRM03,145,20.05,320,80,240,12,7.2,True,696,High
+LTF-01,74,10.01,140,40,150,10,7.4,True,326,High
+ACLRM01,71,6.77,94,27,101,10,10.5,True,199,Medium
+CMSM01D,14,1.16,15,4,20,10,12.1,True,32,Medium
+SM-519,76,9.61,134,38,144,10,7.9,True,308,High
+D8507,36,5.26,73,21,78,10,6.8,True,174,High
