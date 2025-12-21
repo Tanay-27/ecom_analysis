@@ -1223,6 +1223,147 @@ async def get_return_risk_predictions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/export/ordering-schedule-csv")
+async def export_ordering_schedule_csv():
+    """Export ordering schedule data to CSV"""
+    try:
+        from fastapi.responses import StreamingResponse
+        import io
+        
+        # Load the ordering schedule data from your analysis results
+        ordering_file = Path("core/analysis_results/ordering_schedule.csv")
+        if not ordering_file.exists():
+            raise HTTPException(status_code=404, detail="Ordering schedule data not found. Please run the analysis first.")
+        
+        # Read the existing CSV file
+        import pandas as pd
+        ordering_df = pd.read_csv(ordering_file)
+        
+        # Create CSV content
+        output = io.StringIO()
+        ordering_df.to_csv(output, index=False)
+        output.seek(0)
+        
+        # Create response
+        response = StreamingResponse(
+            io.BytesIO(output.getvalue().encode()),
+            media_type="text/csv",
+            headers={"Content-Disposition": f"attachment; filename=ordering_schedule_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"}
+        )
+        
+        return response
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/export/ordering-schedule-excel")
+async def export_ordering_schedule_excel():
+    """Export ordering schedule data to Excel"""
+    try:
+        from fastapi.responses import StreamingResponse
+        import io
+        import pandas as pd
+        
+        # Load the ordering schedule data
+        ordering_file = Path("core/analysis_results/ordering_schedule.csv")
+        if not ordering_file.exists():
+            raise HTTPException(status_code=404, detail="Ordering schedule data not found. Please run the analysis first.")
+        
+        ordering_df = pd.read_csv(ordering_file)
+        
+        # Create Excel file in memory
+        output = io.BytesIO()
+        
+        with pd.ExcelWriter(output, engine='openpyxl') as writer:
+            # Main ordering schedule
+            schedule_df = ordering_df.copy()
+            schedule_df.columns = [col.replace('_', ' ').title() for col in schedule_df.columns]
+            schedule_df.to_excel(writer, sheet_name='Ordering Schedule', index=False)
+            
+            # Summary by urgency if urgency column exists
+            if 'urgency' in ordering_df.columns:
+                urgency_summary = ordering_df.groupby('urgency').agg({
+                    'recommended_qty': ['sum', 'count'],
+                    'estimated_cost': 'sum'
+                }).round(2)
+                urgency_summary.to_excel(writer, sheet_name='Summary by Urgency')
+                
+                # Critical items only
+                critical_items = ordering_df[ordering_df['urgency'] == 'CRITICAL']
+                if not critical_items.empty:
+                    critical_items.to_excel(writer, sheet_name='Critical Orders Only', index=False)
+        
+        output.seek(0)
+        
+        # Create response
+        response = StreamingResponse(
+            output,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            headers={"Content-Disposition": f"attachment; filename=ordering_schedule_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"}
+        )
+        
+        return response
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/data-freshness")
+async def get_data_freshness():
+    """Get data freshness information"""
+    try:
+        freshness_info = {
+            'last_updated': None,
+            'data_sources': {},
+            'update_frequency': 'Manual - Run analysis script for updates',
+            'recommended_update_frequency': 'Weekly for optimal accuracy'
+        }
+        
+        # Check analysis results files
+        results_dir = Path("core/analysis_results")
+        if results_dir.exists():
+            files_info = {
+                'predictions': results_dir / "next_month_predictions.csv",
+                'ordering_schedule': results_dir / "ordering_schedule.csv", 
+                'reorder_analysis': results_dir / "reorder_analysis.csv"
+            }
+            
+            latest_timestamp = None
+            for name, file_path in files_info.items():
+                if file_path.exists():
+                    mod_time = datetime.fromtimestamp(file_path.stat().st_mtime)
+                    freshness_info['data_sources'][name] = {
+                        'last_modified': mod_time.isoformat(),
+                        'file_exists': True
+                    }
+                    if latest_timestamp is None or mod_time > latest_timestamp:
+                        latest_timestamp = mod_time
+                else:
+                    freshness_info['data_sources'][name] = {
+                        'last_modified': None,
+                        'file_exists': False
+                    }
+            
+            # Check sales data
+            sales_file = Path("data/processed/sales_data_jan_june_2025.csv")
+            if sales_file.exists():
+                sales_mod_time = datetime.fromtimestamp(sales_file.stat().st_mtime)
+                freshness_info['data_sources']['sales_data'] = {
+                    'last_modified': sales_mod_time.isoformat(),
+                    'file_exists': True,
+                    'period_covered': 'January - June 2025'
+                }
+            
+            freshness_info['last_updated'] = latest_timestamp.isoformat() if latest_timestamp else None
+            
+        return {
+            "status": "success",
+            "data": freshness_info,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 if __name__ == "__main__":
     import uvicorn
     import os

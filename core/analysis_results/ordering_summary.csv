@@ -1,2 +1,2 @@
 report_date,total_skus_analyzed,skus_need_reorder,urgent_orders,total_estimated_order_value,avg_days_inventory,stockout_risk_skus
-2025-12-11 22:05,15,15,13,"₹1,000,300.00",8.4,2
+2025-12-20 17:31,15,15,11,"₹1,008,900.00",9.0,4

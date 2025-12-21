@@ -27,6 +27,7 @@ class SalesPredictor:
         self.top_skus = None
         self.historical_data = None
         self.recent_data = None
+        self.sku_mapping = None
         
     def load_data(self):
         """Load and prepare data for prediction"""
@@ -48,6 +49,16 @@ class SalesPredictor:
             self.historical_data = None
         
         print(f"Recent data loaded: {len(self.recent_data)} records")
+        
+        # Load SKU mapping for product names
+        try:
+            sku_file = DATA_DIR / "raw" / "sku_list.csv"
+            sku_df = pd.read_csv(sku_file)
+            self.sku_mapping = dict(zip(sku_df['sku'], sku_df['category']))
+            print(f"SKU mapping loaded: {len(self.sku_mapping)} products")
+        except Exception as e:
+            print(f"Could not load SKU mapping: {e}")
+            self.sku_mapping = {}
         print(f"Date range: {self.recent_data['Date'].min()} to {self.recent_data['Date'].max()}")
         
     def identify_top_skus(self, top_n=15):
@@ -238,12 +249,16 @@ class SalesPredictor:
                 seasonal_multiplier = self.get_seasonal_multiplier(sku, next_month)
                 predicted_monthly *= seasonal_multiplier
                 
+                # Calculate enhanced confidence score
+                confidence = self.calculate_confidence_score(sku, sku_data, daily_sales, growth_rate)
+                
                 predictions[sku] = {
                     'predicted_monthly_quantity': max(0, int(predicted_monthly)),
                     'predicted_daily_average': max(0, predicted_monthly / 30),
                     'growth_rate': growth_rate,
                     'seasonal_multiplier': seasonal_multiplier,
-                    'confidence': 'Medium' if abs(growth_rate) < 0.2 else 'Low'
+                    'confidence': confidence,
+                    'product_name': self.sku_mapping.get(sku, 'Unknown Product')
                 }
                 
             except Exception as e:
@@ -252,6 +267,74 @@ class SalesPredictor:
         
         print(f"Predictions generated for {len(predictions)} SKUs")
         return predictions
+    
+    def calculate_confidence_score(self, sku, sku_data, daily_sales, growth_rate):
+        """
+        Calculate enhanced confidence score based on multiple factors
+        Returns: 'High', 'Medium', or 'Low'
+        """
+        confidence_score = 0
+        
+        # Factor 1: Data Volume (30% weight)
+        data_points = len(daily_sales)
+        if data_points >= 120:  # 4+ months of data
+            confidence_score += 30
+        elif data_points >= 60:  # 2+ months of data
+            confidence_score += 20
+        else:  # Less than 2 months
+            confidence_score += 10
+        
+        # Factor 2: Demand Consistency (25% weight)
+        daily_quantities = daily_sales['Quantity']
+        if len(daily_quantities) > 1:
+            cv = daily_quantities.std() / daily_quantities.mean() if daily_quantities.mean() > 0 else 2
+            if cv < 0.5:  # Low variability
+                confidence_score += 25
+            elif cv < 1.0:  # Medium variability
+                confidence_score += 15
+            else:  # High variability
+                confidence_score += 5
+        
+        # Factor 3: Growth Trend Stability (20% weight)
+        abs_growth = abs(growth_rate)
+        if abs_growth < 0.1:  # Stable growth (< 10%)
+            confidence_score += 20
+        elif abs_growth < 0.3:  # Moderate growth (10-30%)
+            confidence_score += 15
+        elif abs_growth < 0.5:  # High but manageable growth (30-50%)
+            confidence_score += 10
+        else:  # Very high growth (>50%) - uncertain
+            confidence_score += 5
+        
+        # Factor 4: Recent Activity Level (15% weight)
+        recent_30_days = daily_sales.tail(30)
+        avg_recent_quantity = recent_30_days['Quantity'].mean()
+        if avg_recent_quantity >= 10:  # High volume
+            confidence_score += 15
+        elif avg_recent_quantity >= 3:  # Medium volume
+            confidence_score += 10
+        else:  # Low volume
+            confidence_score += 5
+        
+        # Factor 5: Historical Context (10% weight)
+        if self.historical_data is not None:
+            historical_sku = self.historical_data[self.historical_data['SKU'] == sku]
+            if len(historical_sku) > 100:  # Good historical context
+                confidence_score += 10
+            elif len(historical_sku) > 50:  # Some historical context
+                confidence_score += 7
+            else:  # Limited historical context
+                confidence_score += 3
+        else:
+            confidence_score += 5  # No historical data available
+        
+        # Convert score to confidence level
+        if confidence_score >= 80:
+            return 'High'
+        elif confidence_score >= 60:
+            return 'Medium'
+        else:
+            return 'Low'
     
     def get_seasonal_multiplier(self, sku, month):
         """Get seasonal adjustment multiplier for a given month"""

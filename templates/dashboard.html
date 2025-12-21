@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Analytics Dashboard</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1><i class="fas fa-chart-line"></i> E-commerce Analytics Dashboard</h1>
+                <div class="last-updated">
+                    <i class="fas fa-clock"></i>
+                    <span id="lastUpdated">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading dashboard data...</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent" style="display: none;">
+        <div class="container">
+            
+            <!-- Key Metrics Cards -->
+            <section class="metrics-section">
+                <div class="metrics-grid">
+                    <div class="metric-card revenue clickable" data-modal="revenue-modal">
+                        <div class="metric-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Total Revenue</h3>
+                            <p class="metric-value" id="totalRevenue">₹0</p>
+                            <span class="metric-change" id="revenueChange">+0%</span>
+                        </div>
+                        <div class="click-indicator">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card orders clickable" data-modal="orders-modal">
+                        <div class="metric-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Total Orders</h3>
+                            <p class="metric-value" id="totalOrders">0</p>
+                            <span class="metric-subtitle" id="avgOrderValue">Avg: ₹0</span>
+                        </div>
+                        <div class="click-indicator">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card skus clickable" data-modal="skus-modal">
+                        <div class="metric-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Active SKUs</h3>
+                            <p class="metric-value" id="activeSKUs">0</p>
+                            <span class="metric-subtitle">Products</span>
+                        </div>
+                        <div class="click-indicator">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card predictions clickable" data-modal="predictions-modal">
+                        <div class="metric-icon">
+                            <i class="fas fa-crystal-ball"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Next Month Forecast</h3>
+                            <p class="metric-value" id="totalPredicted">0</p>
+                            <span class="metric-subtitle">Units</span>
+                        </div>
+                        <div class="click-indicator">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabbed Navigation -->
+            <section class="tabs-section">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="overview">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Overview
+                    </button>
+                    <button class="tab-btn" data-tab="current-sales">
+                        <i class="fas fa-chart-line"></i>
+                        Current Sales
+                    </button>
+                    <button class="tab-btn" data-tab="predictions">
+                        <i class="fas fa-crystal-ball"></i>
+                        Sales Predictions
+                    </button>
+                    <button class="tab-btn" data-tab="historical">
+                        <i class="fas fa-history"></i>
+                        Historical Analysis
+                    </button>
+                    <button class="tab-btn" data-tab="inventory">
+                        <i class="fas fa-warehouse"></i>
+                        Inventory & Orders
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <!-- Overview Tab -->
+                <div class="tab-content active" id="overview">
+                    <!-- Tables Section -->
+                    <section class="tables-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-table"></i> Key Tables & Insights</h2>
+                        </div>
+                        <div class="tables-grid">
+                            
+                            <!-- Critical Orders Table -->
+                            <div class="table-card">
+                                <div class="table-header">
+                                    <h3><i class="fas fa-exclamation-circle"></i> Critical Orders (Order Today)</h3>
+                                    <span class="table-count" id="criticalOrdersCount">0 items</span>
+                                </div>
+                                <div class="table-container">
+                                    <table id="criticalOrdersTable" class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>SKU</th>
+                                                <th>Urgency</th>
+                                                <th>Qty Needed</th>
+                                                <th>Days Left</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Sales Predictions Table -->
+                            <div class="table-card">
+                                <div class="table-header">
+                                    <h3><i class="fas fa-chart-bar"></i> Sales Predictions (Next Month)</h3>
+                                    <span class="table-count" id="predictionsCount">0 items</span>
+                                </div>
+                                <div class="table-container">
+                                    <table id="predictionsTable" class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>SKU</th>
+                                                <th>Monthly Qty</th>
+                                                <th>Daily Avg</th>
+                                                <th>Growth Rate</th>
+                                                <th>Confidence</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Critical Inventory Table -->
+                            <div class="table-card">
+                                <div class="table-header">
+                                    <h3><i class="fas fa-warehouse"></i> Critical Inventory Levels</h3>
+                                    <span class="table-count" id="criticalInventoryCount">0 items</span>
+                                </div>
+                                <div class="table-container">
+                                    <table id="criticalInventoryTable" class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>SKU</th>
+                                                <th>Current Stock</th>
+                                                <th>Days Left</th>
+                                                <th>Daily Demand</th>
+                                                <th>Reorder Point</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- High Priority Orders Table -->
+                            <div class="table-card">
+                                <div class="table-header">
+                                    <h3><i class="fas fa-clock"></i> High Priority Orders (3 Days)</h3>
+                                    <span class="table-count" id="highPriorityCount">0 items</span>
+                                </div>
+                                <div class="table-container">
+                                    <table id="highPriorityTable" class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>SKU</th>
+                                                <th>Qty Needed</th>
+                                                <th>Cost</th>
+                                                <th>Days Left</th>
+                                                <th>Current Stock</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Data will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Critical Alerts Section -->
+                    <section class="alerts-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-exclamation-triangle"></i> Critical Alerts & Insights</h2>
+                        </div>
+                        <div id="alertsContainer" class="alerts-container">
+                            <!-- Alerts will be populated by JavaScript -->
+                        </div>
+                    </section>
+                </div>
+
+                <div class="tab-content" id="current-sales">
+                    <!-- Current Sales Content -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-chart-line"></i> Revenue Trend (Current Period)</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-trophy"></i> Top Performing SKUs</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="topSKUsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="predictions">
+                    <!-- Predictions Content -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-pie-chart"></i> Prediction Confidence Distribution</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="confidenceChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-chart-bar"></i> Predicted vs Current Sales</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="predictionComparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Predictions Table -->
+                    <div class="table-card">
+                        <div class="table-header">
+                            <h3><i class="fas fa-chart-bar"></i> Detailed Sales Predictions</h3>
+                            <span class="table-count" id="allPredictionsCount">0 items</span>
+                        </div>
+                        <div class="table-container">
+                            <table id="allPredictionsTable" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Current Monthly Avg</th>
+                                        <th>Predicted Monthly</th>
+                                        <th>Daily Average</th>
+                                        <th>Growth Rate</th>
+                                        <th>Confidence</th>
+                                        <th>Seasonal Factor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="historical">
+                    <!-- Historical Analysis Content -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-chart-area"></i> Long-term Revenue Trend (2018-2024)</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="historicalRevenueChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-calendar-alt"></i> Seasonal Patterns</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="seasonalChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="inventory">
+                    <!-- Inventory & Orders Content -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-warehouse"></i> Inventory Health</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="inventoryChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3><i class="fas fa-shopping-cart"></i> Order Urgency Distribution</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="orderUrgencyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Comprehensive Ordering Table -->
+                    <div class="table-card">
+                        <div class="table-header">
+                            <h3><i class="fas fa-table"></i> Comprehensive Ordering Analysis</h3>
+                            <div class="table-actions">
+                                <span class="table-count" id="comprehensiveOrderingCount">0 items</span>
+                                <div class="export-dropdown">
+                                    <button class="export-btn" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+                                        <i class="fas fa-download"></i> Export <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="export-menu" style="display: none;">
+                                        <button class="export-option" onclick="exportComprehensiveCSV()">
+                                            <i class="fas fa-file-csv"></i> Comprehensive Analysis (CSV)
+                                        </button>
+                                        <button class="export-option" onclick="exportOrderingScheduleCSV()">
+                                            <i class="fas fa-file-csv"></i> Ordering Schedule (CSV)
+                                        </button>
+                                        <button class="export-option" onclick="exportOrderingScheduleExcel()">
+                                            <i class="fas fa-file-excel"></i> Ordering Schedule (Excel)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="comprehensiveOrderingTable" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product / SKU</th>
+                                        <th>Current Qty</th>
+                                        <th>Predicted Qty</th>
+                                        <th>Growth %</th>
+                                        <th>Lead Time</th>
+                                        <th>Order Qty</th>
+                                        <th>Current Stock</th>
+                                        <th>Days Left</th>
+                                        <th>Urgency</th>
+                                        <th>Cost (₹)</th>
+                                        <th>Confidence</th>
+                                        <th>Godown Distribution</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modal Popups for Clickable Cards -->
+            <div id="revenue-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-rupee-sign"></i> Revenue Breakdown</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Revenue</th>
+                                        <th>Orders</th>
+                                        <th>Growth</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="revenueModalTable">
+                                    <!-- Data populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="orders-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-shopping-cart"></i> Order Analysis</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Total Orders</th>
+                                        <th>Revenue</th>
+                                        <th>Avg Order Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersModalTable">
+                                    <!-- Data populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="skus-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-boxes"></i> SKU Performance</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Revenue</th>
+                                        <th>Quantity Sold</th>
+                                        <th>Avg Price</th>
+                                        <th>Performance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="skusModalTable">
+                                    <!-- Data populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="predictions-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-crystal-ball"></i> Prediction Details</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Current Avg</th>
+                                        <th>Predicted</th>
+                                        <th>Confidence</th>
+                                        <th>Growth Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="predictionsModalTable">
+                                    <!-- Data populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 E-commerce Analytics Dashboard. Last updated: <span id="footerTimestamp"></span></p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

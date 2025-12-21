@@ -32,8 +32,8 @@ def load_recent_sales_data():
     
     # Convert date column
     df['Date'] = pd.to_datetime(df['Date'])
-    df['Month'] = df['Date'].dt.to_period('M')
-    df['Week'] = df['Date'].dt.to_period('W')
+    df['Month'] = df['Date'].dt.strftime('%Y-%m')  # Convert to string for SQLite compatibility
+    df['Week'] = df['Date'].dt.strftime('%Y-W%U')  # Convert to string for SQLite compatibility
     
     return df
 
