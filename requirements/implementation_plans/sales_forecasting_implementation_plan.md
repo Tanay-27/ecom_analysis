@@ -68,14 +68,17 @@ Ensemble Components:
 
 ### 2.2 Technical Stack Implementation
 
-**Backend Architecture:**
+**Backend Architecture (Proc-Bridge):**
 ```
-FastAPI Application
-├── Data Pipeline Service (Pandas/Polars)
-├── ML Model Service (Scikit-learn/XGBoost)
-├── Forecasting Engine (Custom ensemble)
+.NET Core 8+ Web API (Primary Orchestrator)
+├── Data Persistence & ETL (Entity Framework Core)
+├── Business Logic & Ordering Rules (C#)
+├── Python Inference Engine (CLI-based Bridge)
+│   ├── Main Script (inference_bridge.py)
+│   ├── ML Model Files (.pkl / .xgb weights)
+│   └── Batch Processor (Pandas/XGBoost)
 ├── Caching Layer (Redis)
-└── Background Tasks (Celery)
+└── Background Tasks (Hangfire/BackgroundService)
 ```
 
 **Frontend Architecture:**
@@ -148,11 +151,12 @@ Docker Containers
 
 ### Phase 3: API & Dashboard Development (Weeks 6-7)
 
-**Week 6: FastAPI Backend**
-- [ ] Build RESTful API endpoints
-- [ ] Implement model serving infrastructure
-- [ ] Create caching layer with Redis
-- [ ] Add authentication and authorization
+**Week 6: .NET Core & CLI Integration Bridge**
+- [ ] Build RESTful API endpoints in C# (.NET Core 8+)
+- [ ] Implement `PythonRunner` service using `System.Diagnostics.Process`
+- [ ] Develop Python CLI script with JSON I/O capabilities
+- [ ] Optimize model loading (Batch processing vs individual SKU calls)
+- [ ] Add JWT authentication and Role-based access control
 
 **Week 7: React Dashboard**
 - [ ] Develop interactive forecasting dashboard
@@ -161,7 +165,8 @@ Docker Containers
 - [ ] Build responsive mobile interface
 
 **Deliverables:**
-- Production-ready FastAPI backend
+- Production-ready .NET Core Web API
+- Optimized Python CLI Inference Script
 - Interactive React dashboard
 - API documentation (OpenAPI)
 - Mobile-responsive interface
@@ -225,11 +230,18 @@ Business Metrics:
 - **A/B Testing:** Compare ensemble vs individual models
 - **Business Validation:** Real-world performance monitoring
 
-### 4.3 Model Monitoring
-- **Data Drift Detection:** Monitor input feature distributions
-- **Performance Degradation:** Track prediction accuracy over time
-- **Automated Retraining:** Weekly model updates with new data
-- **Alert System:** Notify on significant performance drops
+## 5. C# and Python Integration (CLI Bridge)
+
+### 5.1 Communication Mechanism
+- **Subprocess Pattern**: C# uses `Process.Start()` to invoke the Python interpreter.
+- **I/O Strategy**: 
+    - **Input**: C# writes a temporary JSON batch file (e.g., `pending_forecasts.json`).
+    - **Execution**: `python forecast.py --input pending_forecasts.json`.
+    - **Output**: Python writes `results.json` which C# reads and persists to DB.
+
+### 5.2 Performance Optimization
+- **Batching**: To avoid Python's "Cold Start" (import overhead), C# will group multiple SKUs into a single script call rather than calling Python per individual product.
+- **Environment**: Use a dedicated `venv` (Virtual Environment) path managed by the C# configuration.
 
 ---
 
