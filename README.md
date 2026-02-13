@@ -260,10 +260,10 @@ MAX_LEAD_TIME = 60      # days
 ### Current Performance:
 - **Prediction Accuracy**: 88-92% (MAPE: 8-12%)
 - **Inventory Optimization**: Reduced stockouts by 35%
-- **Cost Savings**: ₹2.5L monthly through optimized ordering
+- **Cost Savings**: Rs2.5L monthly through optimized ordering
 
 ### Key Insights:
-- **13 Critical Items**: Need immediate ordering (₹10L investment)
+- **13 Critical Items**: Need immediate ordering (Rs10L investment)
 - **Growth Trend**: +15.2% month-over-month
 - **Top Categories**: Roti Makers, Sewing Machines leading sales
 
@@ -312,7 +312,7 @@ For issues or questions:
 - Prediction confidence needs improvement with more data
 
 ### Recommended Actions:
-1. **Immediate**: Place 13 critical orders worth ₹10L
+1. **Immediate**: Place 13 critical orders worth Rs10L
 2. **Short-term**: Increase safety stock levels for top SKUs
 3. **Long-term**: Implement automated reorder points
 
@@ -371,13 +371,13 @@ All results are saved in `core/analysis_results/`:
 ## 🎯 Key Insights
 
 ### Current Status (June 2025 Data)
-- **Total Revenue**: ₹2.1Cr across 63K orders
+- **Total Revenue**: Rs2.1Cr across 63K orders
 - **Top Performers**: CMSM01C, D8507, CMSM01A leading sales
-- **Critical Orders**: 13 items need immediate ordering (₹10L investment)
+- **Critical Orders**: 13 items need immediate ordering (Rs10L investment)
 - **Growth Trend**: +15.2% month-over-month growth
 
 ### Recommended Actions:
-1. **Immediate**: Place 13 critical orders worth ₹10L
+1. **Immediate**: Place 13 critical orders worth Rs10L
 2. **Short-term**: Increase safety stock levels for top SKUs  
 3. **Long-term**: Implement automated reorder points
 
@@ -389,7 +389,7 @@ All results are saved in `core/analysis_results/`:
 - Prediction confidence needs improvement with more data
 
 ### Recommended Actions:
-1. **Immediate**: Place 13 critical orders worth ₹10L
+1. **Immediate**: Place 13 critical orders worth Rs10L
 2. **Short-term**: Increase safety stock levels for top SKUs
 3. **Long-term**: Implement automated reorder points
 

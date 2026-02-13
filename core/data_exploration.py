@@ -11,10 +11,13 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Set up paths
-DATA_DIR = Path("/Users/tanayshah/Desktop/personal/projects/ecom_analysis/data")
-RAW_DIR = DATA_DIR / "raw"
-PROCESSED_DIR = DATA_DIR / "processed"
-CORE_DIR = Path("/Users/tanayshah/Desktop/personal/projects/ecom_analysis/core")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_PATH = BASE_DIR / "data"
+RAW_DIR = DATA_PATH / "raw"
+PROCESSED_DIR = DATA_PATH / "processed"
+CORE_DIR = BASE_DIR / "core"
+
+
 
 def load_recent_sales_data():
     """Load and explore recent sales data (Jan-June 2025)"""
@@ -28,7 +31,7 @@ def load_recent_sales_data():
     print(f"Columns: {list(df.columns)}")
     print(f"Unique SKUs: {df['SKU'].nunique()}")
     print(f"Total transactions: {len(df)}")
-    print(f"Total revenue: ₹{df['Amount'].sum():,.2f}")
+    print(f"Total revenue: Rs{df['Amount'].sum():,.2f}")
     
     # Convert date column
     df['Date'] = pd.to_datetime(df['Date'])
@@ -218,8 +221,8 @@ def main():
     # Summary insights
     print("\n=== Key Insights ===")
     print(f"1. Total SKUs in recent data: {sales_df['SKU'].nunique()}")
-    print(f"2. Top 10 SKUs contribute: ₹{top_skus.head(10)['Total_Revenue'].sum():,.2f}")
-    print(f"3. Average daily sales: ₹{sales_df.groupby('Date')['Amount'].sum().mean():,.2f}")
+    print(f"2. Top 10 SKUs contribute: Rs{top_skus.head(10)['Total_Revenue'].sum():,.2f}")
+    print(f"3. Average daily sales: Rs{sales_df.groupby('Date')['Amount'].sum().mean():,.2f}")
     print(f"4. Most active category: {sku_master['category'].value_counts().index[0]}")
     
     return {

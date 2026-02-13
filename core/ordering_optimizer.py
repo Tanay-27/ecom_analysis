@@ -12,9 +12,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Set up paths
-DATA_DIR = Path("/Users/tanayshah/Desktop/personal/projects/ecom_analysis/data")
+DATA_DIR = Path("D:/software/ecom_analysis/data")
 RAW_DIR = DATA_DIR / "raw"
-CORE_DIR = Path("/Users/tanayshah/Desktop/personal/projects/ecom_analysis/core")
+CORE_DIR = Path("D:/software/ecom_analysis/core")
 
 class OrderingOptimizer:
     def __init__(self):
@@ -215,7 +215,7 @@ class OrderingOptimizer:
                 urgency = "MEDIUM"
             
             # Calculate order cost (dummy calculation)
-            order_cost = row['recommended_order_qty'] * 100  # Assume ₹100 per unit
+            order_cost = row['recommended_order_qty'] * 100  # Assume Rs100 per unit
             
             ordering_schedule.append({
                 'sku': sku,
@@ -249,7 +249,7 @@ class OrderingOptimizer:
             'total_skus_analyzed': total_skus,
             'skus_need_reorder': need_reorder,
             'urgent_orders': urgent_orders,
-            'total_estimated_order_value': f"₹{total_order_value:,.2f}",
+            'total_estimated_order_value': f"Rs{total_order_value:,.2f}",
             'avg_days_inventory': round(reorder_df['days_remaining'].mean(), 1),
             'stockout_risk_skus': len(reorder_df[reorder_df['days_remaining'] < 7])
         }

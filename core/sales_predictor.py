@@ -16,9 +16,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Set up paths
-DATA_DIR = Path("/Users/tanayshah/Desktop/personal/projects/ecom_analysis/data")
+DATA_DIR = Path("D:/software/ecom_analysis/data")
 PROCESSED_DIR = DATA_DIR / "processed"
-CORE_DIR = Path("/Users/tanayshah/Desktop/personal/projects/ecom_analysis/core")
+CORE_DIR = Path("D:/software/ecom_analysis/core")
 
 class SalesPredictor:
     def __init__(self):
@@ -87,7 +87,7 @@ class SalesPredictor:
         for sku in self.top_skus.index[:10]:
             revenue = self.top_skus.loc[sku, 'Total_Revenue']
             daily_qty = self.top_skus.loc[sku, 'Daily_Avg_Quantity']
-            print(f"  {sku}: ₹{revenue:,.0f} ({daily_qty:.1f} units/day)")
+            print(f"  {sku}: Rs{revenue:,.0f} ({daily_qty:.1f} units/day)")
         
         return self.top_skus.index.tolist()
     
@@ -192,9 +192,9 @@ class SalesPredictor:
         print(f"  Target Error Range: 8-12%")
         
         if mape <= 12:
-            print("✅ Model meets accuracy requirements!")
+            print("Model meets accuracy requirements!")
         else:
-            print("⚠️  Model accuracy needs improvement")
+            print("Model accuracy needs improvement")
         
         return mape, rmse
     
