@@ -1,0 +1,939 @@
+{
+  "data_summary": {
+    "historical_records": 48604,
+    "restart_records": 30590,
+    "historical_skus": 225,
+    "restart_skus": 90,
+    "continuing_skus": 80,
+    "new_skus": 10
+  },
+  "seasonal_insights": {
+    "monthly_multipliers": {
+      "1": 1.0299425031795835,
+      "2": 0.9369525130370698,
+      "3": 1.098378956599074,
+      "4": 0.9646405438098407,
+      "5": 1.0672952239390763,
+      "6": 0.9163917246869392,
+      "7": 1.035726391009475,
+      "8": 1.0126654705006173,
+      "9": 0.9486322349129153,
+      "10": 1.0164716418467394,
+      "11": 0.9306835249375744,
+      "12": 1.0422192715410952
+    },
+    "category_patterns": {
+      "Flipkart Store": {
+        "1": 1.0011980709115038,
+        "2": 0.9961738258936617,
+        "3": 0.9970684887571368,
+        "4": 0.9962609192514073,
+        "5": 1.000751403065625,
+        "6": 1.0024140426972317,
+        "7": 1.0004157638933846,
+        "8": 1.0006365674176474,
+        "9": 0.997702004086525,
+        "10": 1.0009475522812714,
+        "11": 1.0088230840330796,
+        "12": 0.9976082777115256
+      },
+      "Amazon Stores": {
+        "1": 0.9984040250578085,
+        "2": 1.0042758299427297,
+        "3": 1.0060561356918873,
+        "4": 0.9996909045745316,
+        "5": 0.9961775996472044,
+        "6": 0.9960414754797451,
+        "7": 0.9960878603852011,
+        "8": 0.9963486201555005,
+        "9": 0.9941957803171271,
+        "10": 1.012332179197737,
+        "11": 1.0030740952511978,
+        "12": 0.9973154942993284
+      }
+    },
+    "yearly_growth": {
+      "2020": -1.117123407226392,
+      "2021": -6.672550750220653,
+      "2022": 38.414980139965955,
+      "2023": 51.216179283957366
+    },
+    "avg_yoy_growth": 20.460371316619067,
+    "peak_months": [
+      [
+        3,
+        1.098378956599074
+      ],
+      [
+        5,
+        1.0672952239390763
+      ],
+      [
+        12,
+        1.0422192715410952
+      ]
+    ],
+    "low_months": [
+      [
+        6,
+        0.9163917246869392
+      ],
+      [
+        11,
+        0.9306835249375744
+      ],
+      [
+        2,
+        0.9369525130370698
+      ]
+    ]
+  },
+  "sku_transitions": {
+    "continuing_skus": [
+      "LRM03",
+      "LPC02",
+      "ACTL5.0",
+      "LA11",
+      "CMSM082",
+      "HY128W",
+      "LAF02",
+      "LAF03",
+      "CMSM08A1",
+      "LPB01BU",
+      "CMSM062",
+      "LIRH02",
+      "LNUBJCS01",
+      "CMSM01C",
+      "LSG02",
+      "CPS2",
+      "CMSM01B",
+      "CMSM01D",
+      "HS206C",
+      "LNUBR01",
+      "LNUB5J01",
+      "SC217",
+      "JWS-1501",
+      "JWS-0801",
+      "ACTL3.8",
+      "LPB01PI",
+      "SM-618",
+      "CMSM081",
+      "LIRH01",
+      "ACIB6DS",
+      "CMSM06A1",
+      "ACFT13",
+      "SM-617",
+      "LPB01BL",
+      "LMX04",
+      "D8507",
+      "ACTL2.9",
+      "LNUB5JS01",
+      "CSAK02",
+      "HY128",
+      "CMSM06A2",
+      "CMSM06A",
+      "LNUBJS01",
+      "LSJ01",
+      "ACTL6.0",
+      "CKS3",
+      "CMSM01A",
+      "LPC01",
+      "CSKA01",
+      "SM-519",
+      "D8507E",
+      "HY628",
+      "LGM747",
+      "ACPV3",
+      "LICRH01",
+      "CKS1",
+      "CMSM061",
+      "ACLRM01",
+      "LNUBJR01",
+      "LRM021",
+      "LNUBS01",
+      "CSAK03",
+      "JSD-02",
+      "LAF01",
+      "LSG03",
+      "LSG01",
+      "CPS1",
+      "LPB01WH",
+      "CHSM1",
+      "CMSM08A2",
+      "LPB01GR",
+      "CMSM08A",
+      "CMSM06",
+      "SC605E",
+      "CMSM08",
+      "LNUB5JR01",
+      "ACTL2.0",
+      "LRM02",
+      "CMSM01",
+      "LA12"
+    ],
+    "new_skus": [
+      "LPB01GR1",
+      "LNUB5J011",
+      "D8507-E",
+      "HD10",
+      "LTF-01",
+      "HD06",
+      "LNUBJC011",
+      "LNUBJ011",
+      "LSG011",
+      "LTF-02"
+    ],
+    "continuing_performance": {
+      "LRM03": {
+        "historical_monthly_avg": 5.666666666666667,
+        "restart_monthly_avg": 114.58333333333333,
+        "volume_change_pct": 1922.0588235294117
+      },
+      "LPC02": {
+        "historical_monthly_avg": 6.545454545454546,
+        "restart_monthly_avg": 4.545454545454546,
+        "volume_change_pct": -30.555555555555554
+      },
+      "LA11": {
+        "historical_monthly_avg": 6.461538461538462,
+        "restart_monthly_avg": 2.0,
+        "volume_change_pct": -69.04761904761905
+      },
+      "CMSM082": {
+        "historical_monthly_avg": 16.083333333333332,
+        "restart_monthly_avg": 15.0,
+        "volume_change_pct": -6.735751295336781
+      },
+      "HY128W": {
+        "historical_monthly_avg": 22.0,
+        "restart_monthly_avg": 21.75,
+        "volume_change_pct": -1.1363636363636365
+      },
+      "LAF02": {
+        "historical_monthly_avg": 8.333333333333334,
+        "restart_monthly_avg": 13.166666666666666,
+        "volume_change_pct": 57.999999999999986
+      },
+      "LAF03": {
+        "historical_monthly_avg": 10.666666666666666,
+        "restart_monthly_avg": 9.5,
+        "volume_change_pct": -10.937499999999995
+      },
+      "CMSM08A1": {
+        "historical_monthly_avg": 5.928571428571429,
+        "restart_monthly_avg": 6.5,
+        "volume_change_pct": 9.638554216867465
+      },
+      "LPB01BU": {
+        "historical_monthly_avg": 19.0,
+        "restart_monthly_avg": 4.2727272727272725,
+        "volume_change_pct": -77.51196172248804
+      },
+      "CMSM062": {
+        "historical_monthly_avg": 29.0,
+        "restart_monthly_avg": 61.07692307692308,
+        "volume_change_pct": 110.61007957559683
+      },
+      "LIRH02": {
+        "historical_monthly_avg": 9.333333333333334,
+        "restart_monthly_avg": 9.0,
+        "volume_change_pct": -3.5714285714285774
+      },
+      "CMSM01C": {
+        "historical_monthly_avg": 28.066666666666666,
+        "restart_monthly_avg": 29.833333333333332,
+        "volume_change_pct": 6.294536817102133
+      },
+      "LSG02": {
+        "historical_monthly_avg": 22.0,
+        "restart_monthly_avg": 26.833333333333332,
+        "volume_change_pct": 21.969696969696965
+      },
+      "CMSM01B": {
+        "historical_monthly_avg": 21.80952380952381,
+        "restart_monthly_avg": 17.666666666666668,
+        "volume_change_pct": -18.995633187772924
+      },
+      "CMSM01D": {
+        "historical_monthly_avg": 25.642857142857142,
+        "restart_monthly_avg": 29.0,
+        "volume_change_pct": 13.091922005571032
+      },
+      "HS206C": {
+        "historical_monthly_avg": 20.136363636363637,
+        "restart_monthly_avg": 30.46153846153846,
+        "volume_change_pct": 51.276263240145845
+      },
+      "SC217": {
+        "historical_monthly_avg": 17.545454545454547,
+        "restart_monthly_avg": 9.666666666666666,
+        "volume_change_pct": -44.90500863557859
+      },
+      "JWS-1501": {
+        "historical_monthly_avg": 14.1875,
+        "restart_monthly_avg": 6.583333333333333,
+        "volume_change_pct": -53.59765051395008
+      },
+      "JWS-0801": {
+        "historical_monthly_avg": 17.75,
+        "restart_monthly_avg": 43.46153846153846,
+        "volume_change_pct": 144.85373781148428
+      },
+      "ACTL3.8": {
+        "historical_monthly_avg": 14.135135135135135,
+        "restart_monthly_avg": 10.0,
+        "volume_change_pct": -29.254302103250478
+      },
+      "LPB01PI": {
+        "historical_monthly_avg": 11.857142857142858,
+        "restart_monthly_avg": 10.909090909090908,
+        "volume_change_pct": -7.9956188389923435
+      },
+      "SM-618": {
+        "historical_monthly_avg": 14.222222222222221,
+        "restart_monthly_avg": 13.666666666666666,
+        "volume_change_pct": -3.9062499999999987
+      },
+      "CMSM081": {
+        "historical_monthly_avg": 10.7,
+        "restart_monthly_avg": 17.0,
+        "volume_change_pct": 58.8785046728972
+      },
+      "LIRH01": {
+        "historical_monthly_avg": 13.350877192982455,
+        "restart_monthly_avg": 8.0,
+        "volume_change_pct": -40.07884362680683
+      },
+      "ACIB6DS": {
+        "historical_monthly_avg": 19.652173913043477,
+        "restart_monthly_avg": 13.583333333333334,
+        "volume_change_pct": -30.881268436578164
+      },
+      "CMSM06A1": {
+        "historical_monthly_avg": 21.863636363636363,
+        "restart_monthly_avg": 98.3076923076923,
+        "volume_change_pct": 349.6401727170958
+      },
+      "ACFT13": {
+        "historical_monthly_avg": 11.294117647058824,
+        "restart_monthly_avg": 13.666666666666666,
+        "volume_change_pct": 21.006944444444432
+      },
+      "SM-617": {
+        "historical_monthly_avg": 18.636363636363637,
+        "restart_monthly_avg": 23.181818181818183,
+        "volume_change_pct": 24.390243902439032
+      },
+      "LPB01BL": {
+        "historical_monthly_avg": 25.0,
+        "restart_monthly_avg": 33.5,
+        "volume_change_pct": 34.0
+      },
+      "LMX04": {
+        "historical_monthly_avg": 22.025641025641026,
+        "restart_monthly_avg": 28.846153846153847,
+        "volume_change_pct": 30.966239813736905
+      },
+      "D8507": {
+        "historical_monthly_avg": 25.875,
+        "restart_monthly_avg": 48.0,
+        "volume_change_pct": 85.5072463768116
+      },
+      "ACTL2.9": {
+        "historical_monthly_avg": 11.41025641025641,
+        "restart_monthly_avg": 2.0,
+        "volume_change_pct": -82.47191011235955
+      },
+      "CSAK02": {
+        "historical_monthly_avg": 23.0,
+        "restart_monthly_avg": 31.384615384615383,
+        "volume_change_pct": 36.454849498327754
+      },
+      "HY128": {
+        "historical_monthly_avg": 23.25,
+        "restart_monthly_avg": 18.615384615384617,
+        "volume_change_pct": -19.93382961124896
+      },
+      "CMSM06A2": {
+        "historical_monthly_avg": 20.65,
+        "restart_monthly_avg": 28.0,
+        "volume_change_pct": 35.59322033898306
+      },
+      "CMSM06A": {
+        "historical_monthly_avg": 22.790697674418606,
+        "restart_monthly_avg": 44.0,
+        "volume_change_pct": 93.0612244897959
+      },
+      "LSJ01": {
+        "historical_monthly_avg": 20.964285714285715,
+        "restart_monthly_avg": 15.5,
+        "volume_change_pct": -26.064735945485523
+      },
+      "ACTL6.0": {
+        "historical_monthly_avg": 15.538461538461538,
+        "restart_monthly_avg": 3.2,
+        "volume_change_pct": -79.4059405940594
+      },
+      "CKS3": {
+        "historical_monthly_avg": 21.21875,
+        "restart_monthly_avg": 8.11111111111111,
+        "volume_change_pct": -61.77385043364425
+      },
+      "CMSM01A": {
+        "historical_monthly_avg": 28.19047619047619,
+        "restart_monthly_avg": 29.833333333333332,
+        "volume_change_pct": 5.827702702702701
+      },
+      "LPC01": {
+        "historical_monthly_avg": 11.909090909090908,
+        "restart_monthly_avg": 7.7272727272727275,
+        "volume_change_pct": -35.114503816793885
+      },
+      "CSKA01": {
+        "historical_monthly_avg": 24.36,
+        "restart_monthly_avg": 22.0,
+        "volume_change_pct": -9.688013136288996
+      },
+      "SM-519": {
+        "historical_monthly_avg": 23.1875,
+        "restart_monthly_avg": 31.2,
+        "volume_change_pct": 34.55525606469003
+      },
+      "D8507E": {
+        "historical_monthly_avg": 21.142857142857142,
+        "restart_monthly_avg": 9.0,
+        "volume_change_pct": -57.432432432432435
+      },
+      "HY628": {
+        "historical_monthly_avg": 14.375,
+        "restart_monthly_avg": 31.692307692307693,
+        "volume_change_pct": 120.46822742474916
+      },
+      "LGM747": {
+        "historical_monthly_avg": 24.42105263157895,
+        "restart_monthly_avg": 10.5,
+        "volume_change_pct": -57.004310344827594
+      },
+      "ACPV3": {
+        "historical_monthly_avg": 13.137931034482758,
+        "restart_monthly_avg": 9.333333333333334,
+        "volume_change_pct": -28.958880139982497
+      },
+      "LICRH01": {
+        "historical_monthly_avg": 10.982456140350877,
+        "restart_monthly_avg": 7.0,
+        "volume_change_pct": -36.26198083067093
+      },
+      "CKS1": {
+        "historical_monthly_avg": 23.90909090909091,
+        "restart_monthly_avg": 35.69230769230769,
+        "volume_change_pct": 49.283416203568294
+      },
+      "CMSM061": {
+        "historical_monthly_avg": 23.0625,
+        "restart_monthly_avg": 55.84615384615385,
+        "volume_change_pct": 142.15134459036898
+      },
+      "ACLRM01": {
+        "historical_monthly_avg": 22.794871794871796,
+        "restart_monthly_avg": 51.84615384615385,
+        "volume_change_pct": 127.44656917885264
+      },
+      "LRM021": {
+        "historical_monthly_avg": 24.84,
+        "restart_monthly_avg": 27.666666666666668,
+        "volume_change_pct": 11.379495437466456
+      },
+      "CSAK03": {
+        "historical_monthly_avg": 17.4,
+        "restart_monthly_avg": 10.083333333333334,
+        "volume_change_pct": -42.04980842911877
+      },
+      "JSD-02": {
+        "historical_monthly_avg": 24.375,
+        "restart_monthly_avg": 176.46153846153845,
+        "volume_change_pct": 623.9447731755423
+      },
+      "LSG03": {
+        "historical_monthly_avg": 24.8,
+        "restart_monthly_avg": 59.46153846153846,
+        "volume_change_pct": 139.76426799007442
+      },
+      "LSG01": {
+        "historical_monthly_avg": 15.767441860465116,
+        "restart_monthly_avg": 79.76923076923077,
+        "volume_change_pct": 405.91105060131616
+      },
+      "CPS1": {
+        "historical_monthly_avg": 20.12121212121212,
+        "restart_monthly_avg": 20.384615384615383,
+        "volume_change_pct": 1.3090824837812727
+      },
+      "LPB01WH": {
+        "historical_monthly_avg": 11.5,
+        "restart_monthly_avg": 7.75,
+        "volume_change_pct": -32.608695652173914
+      },
+      "CHSM1": {
+        "historical_monthly_avg": 10.375,
+        "restart_monthly_avg": 3.3333333333333335,
+        "volume_change_pct": -67.87148594377508
+      },
+      "CMSM08A2": {
+        "historical_monthly_avg": 8.818181818181818,
+        "restart_monthly_avg": 10.166666666666666,
+        "volume_change_pct": 15.292096219931262
+      },
+      "LPB01GR": {
+        "historical_monthly_avg": 9.666666666666666,
+        "restart_monthly_avg": 2.5454545454545454,
+        "volume_change_pct": -73.6677115987461
+      },
+      "CMSM08A": {
+        "historical_monthly_avg": 20.53846153846154,
+        "restart_monthly_avg": 9.25,
+        "volume_change_pct": -54.96254681647941
+      },
+      "CMSM06": {
+        "historical_monthly_avg": 20.75,
+        "restart_monthly_avg": 125.0,
+        "volume_change_pct": 502.4096385542169
+      },
+      "SC605E": {
+        "historical_monthly_avg": 12.636363636363637,
+        "restart_monthly_avg": 3.1666666666666665,
+        "volume_change_pct": -74.9400479616307
+      },
+      "ACTL2.0": {
+        "historical_monthly_avg": 14.205128205128204,
+        "restart_monthly_avg": 8.5,
+        "volume_change_pct": -40.16245487364621
+      },
+      "LRM02": {
+        "historical_monthly_avg": 20.735294117647058,
+        "restart_monthly_avg": 743.7692307692307,
+        "volume_change_pct": 3486.9721767594106
+      },
+      "CMSM01": {
+        "historical_monthly_avg": 27.75,
+        "restart_monthly_avg": 29.0,
+        "volume_change_pct": 4.504504504504505
+      }
+    },
+    "new_sku_patterns": {
+      "LPB01GR1": {
+        "monthly_avg": 4.5,
+        "trend_slope": -3.0000000000000013,
+        "months_active": 2
+      },
+      "D8507-E": {
+        "monthly_avg": 25.875,
+        "trend_slope": 1.797619047619048,
+        "months_active": 8
+      },
+      "HD10": {
+        "monthly_avg": 13.75,
+        "trend_slope": 0.023809523809523607,
+        "months_active": 8
+      },
+      "LTF-01": {
+        "monthly_avg": 17.1,
+        "trend_slope": -2.0060606060606045,
+        "months_active": 10
+      },
+      "HD06": {
+        "monthly_avg": 7.333333333333333,
+        "trend_slope": -0.4499999999999999,
+        "months_active": 9
+      },
+      "LSG011": {
+        "monthly_avg": 22.5,
+        "trend_slope": -1.2857142857142834,
+        "months_active": 6
+      },
+      "LTF-02": {
+        "monthly_avg": 12.545454545454545,
+        "trend_slope": -2.563636363636363,
+        "months_active": 11
+      }
+    }
+  },
+  "restart_trends": {
+    "overall_quantity_trend": 308.96703296703305,
+    "overall_revenue_trend": 703231.0926373629,
+    "growth_acceleration": 224.15329768270945,
+    "sku_trends": {
+      "CMSM062": {
+        "trend_slope": 8.76923076923077,
+        "avg_monthly": 61.07692307692308,
+        "months_data": 13
+      },
+      "ACLRM01": {
+        "trend_slope": 5.302197802197805,
+        "avg_monthly": 51.84615384615385,
+        "months_data": 13
+      },
+      "LAF03": {
+        "trend_slope": 7.6000000000000005,
+        "avg_monthly": 9.5,
+        "months_data": 4
+      },
+      "D8507": {
+        "trend_slope": 6.763636363636363,
+        "avg_monthly": 48.0,
+        "months_data": 11
+      },
+      "LRM02": {
+        "trend_slope": 178.45604395604397,
+        "avg_monthly": 743.7692307692307,
+        "months_data": 13
+      },
+      "CMSM06A1": {
+        "trend_slope": 19.06593406593407,
+        "avg_monthly": 98.3076923076923,
+        "months_data": 13
+      },
+      "LRM03": {
+        "trend_slope": 25.10139860139859,
+        "avg_monthly": 114.58333333333333,
+        "months_data": 12
+      },
+      "LPB01BU": {
+        "trend_slope": -0.6272727272727271,
+        "avg_monthly": 4.2727272727272725,
+        "months_data": 11
+      },
+      "SC605E": {
+        "trend_slope": -0.3916083916083912,
+        "avg_monthly": 3.1666666666666665,
+        "months_data": 12
+      },
+      "CSAK03": {
+        "trend_slope": -0.4300699300699296,
+        "avg_monthly": 10.083333333333334,
+        "months_data": 12
+      },
+      "CSAK02": {
+        "trend_slope": 1.3956043956043962,
+        "avg_monthly": 31.384615384615383,
+        "months_data": 13
+      },
+      "CKS1": {
+        "trend_slope": 6.417582417582417,
+        "avg_monthly": 35.69230769230769,
+        "months_data": 13
+      },
+      "LSG02": {
+        "trend_slope": 2.8461538461538454,
+        "avg_monthly": 26.833333333333332,
+        "months_data": 12
+      },
+      "CMSM08A2": {
+        "trend_slope": -2.485714285714285,
+        "avg_monthly": 10.166666666666666,
+        "months_data": 6
+      },
+      "HY628": {
+        "trend_slope": 2.692307692307693,
+        "avg_monthly": 31.692307692307693,
+        "months_data": 13
+      },
+      "CSKA01": {
+        "trend_slope": -0.6363636363636354,
+        "avg_monthly": 22.0,
+        "months_data": 12
+      },
+      "ACFT13": {
+        "trend_slope": -1.266666666666667,
+        "avg_monthly": 13.666666666666666,
+        "months_data": 9
+      },
+      "LA12": {
+        "trend_slope": -0.4642857142857145,
+        "avg_monthly": 2.5714285714285716,
+        "months_data": 7
+      },
+      "CMSM06A": {
+        "trend_slope": 6.351648351648351,
+        "avg_monthly": 44.0,
+        "months_data": 13
+      },
+      "CKS3": {
+        "trend_slope": 0.23333333333333334,
+        "avg_monthly": 8.11111111111111,
+        "months_data": 9
+      },
+      "ACIB6DS": {
+        "trend_slope": 0.3881118881118882,
+        "avg_monthly": 13.583333333333334,
+        "months_data": 12
+      },
+      "D8507E": {
+        "trend_slope": 2.514285714285714,
+        "avg_monthly": 9.0,
+        "months_data": 6
+      },
+      "CMSM061": {
+        "trend_slope": 10.565934065934066,
+        "avg_monthly": 55.84615384615385,
+        "months_data": 13
+      },
+      "ACTL6.0": {
+        "trend_slope": -1.5999999999999999,
+        "avg_monthly": 3.2,
+        "months_data": 5
+      },
+      "SC217": {
+        "trend_slope": 1.2307692307692306,
+        "avg_monthly": 9.666666666666666,
+        "months_data": 12
+      },
+      "SM-617": {
+        "trend_slope": 2.0636363636363635,
+        "avg_monthly": 23.181818181818183,
+        "months_data": 11
+      },
+      "ACPV3": {
+        "trend_slope": -4.499999999999999,
+        "avg_monthly": 9.333333333333334,
+        "months_data": 3
+      },
+      "LPB01PI": {
+        "trend_slope": -1.6272727272727276,
+        "avg_monthly": 10.909090909090908,
+        "months_data": 11
+      },
+      "CMSM06A2": {
+        "trend_slope": 0.3776223776223779,
+        "avg_monthly": 28.0,
+        "months_data": 12
+      },
+      "ACTL2.0": {
+        "trend_slope": -2.2380952380952372,
+        "avg_monthly": 8.5,
+        "months_data": 8
+      },
+      "JWS-1501": {
+        "trend_slope": -0.08041958041958033,
+        "avg_monthly": 6.583333333333333,
+        "months_data": 12
+      },
+      "LAF02": {
+        "trend_slope": 1.4000000000000001,
+        "avg_monthly": 13.166666666666666,
+        "months_data": 6
+      },
+      "CMSM01": {
+        "trend_slope": -0.05714285714285457,
+        "avg_monthly": 29.0,
+        "months_data": 6
+      },
+      "CMSM01C": {
+        "trend_slope": 0.3714285714285748,
+        "avg_monthly": 29.833333333333332,
+        "months_data": 6
+      },
+      "ACTL3.8": {
+        "trend_slope": -4.600000000000001,
+        "avg_monthly": 10.0,
+        "months_data": 5
+      },
+      "CMSM01A": {
+        "trend_slope": 0.3714285714285748,
+        "avg_monthly": 29.833333333333332,
+        "months_data": 6
+      },
+      "CMSM01D": {
+        "trend_slope": 0.17142857142857232,
+        "avg_monthly": 29.0,
+        "months_data": 6
+      },
+      "LRM021": {
+        "trend_slope": -0.9142857142857115,
+        "avg_monthly": 27.666666666666668,
+        "months_data": 6
+      },
+      "CMSM01B": {
+        "trend_slope": -2.4571428571428564,
+        "avg_monthly": 17.666666666666668,
+        "months_data": 6
+      },
+      "LICRH01": {
+        "trend_slope": -5.200000000000003,
+        "avg_monthly": 7.0,
+        "months_data": 4
+      },
+      "CMSM08A": {
+        "trend_slope": -8.300000000000004,
+        "avg_monthly": 9.25,
+        "months_data": 4
+      },
+      "LSG011": {
+        "trend_slope": -1.2857142857142834,
+        "avg_monthly": 22.5,
+        "months_data": 6
+      },
+      "LAF01": {
+        "trend_slope": 0.2999999999999998,
+        "avg_monthly": 1.25,
+        "months_data": 4
+      },
+      "CMSM081": {
+        "trend_slope": 2.599999999999998,
+        "avg_monthly": 17.0,
+        "months_data": 4
+      },
+      "CHSM1": {
+        "trend_slope": -0.4999999999999995,
+        "avg_monthly": 3.3333333333333335,
+        "months_data": 3
+      },
+      "CMSM082": {
+        "trend_slope": -13.0,
+        "avg_monthly": 15.0,
+        "months_data": 3
+      },
+      "LNUB5JR01": {
+        "trend_slope": 0.0,
+        "avg_monthly": 1.0,
+        "months_data": 4
+      },
+      "CMSM08A1": {
+        "trend_slope": -3.114285714285712,
+        "avg_monthly": 6.5,
+        "months_data": 6
+      },
+      "SM-519": {
+        "trend_slope": 2.581818181818182,
+        "avg_monthly": 31.2,
+        "months_data": 10
+      },
+      "JSD-02": {
+        "trend_slope": 27.494505494505507,
+        "avg_monthly": 176.46153846153845,
+        "months_data": 13
+      },
+      "LPB01BL": {
+        "trend_slope": 2.8741258741258733,
+        "avg_monthly": 33.5,
+        "months_data": 12
+      },
+      "LSG01": {
+        "trend_slope": 10.928571428571432,
+        "avg_monthly": 79.76923076923077,
+        "months_data": 13
+      },
+      "HY128": {
+        "trend_slope": -1.4890109890109882,
+        "avg_monthly": 18.615384615384617,
+        "months_data": 13
+      },
+      "LSG03": {
+        "trend_slope": 9.950549450549453,
+        "avg_monthly": 59.46153846153846,
+        "months_data": 13
+      },
+      "LPB01WH": {
+        "trend_slope": -1.0314685314685306,
+        "avg_monthly": 7.75,
+        "months_data": 12
+      },
+      "HY128W": {
+        "trend_slope": 0.6748251748251751,
+        "avg_monthly": 21.75,
+        "months_data": 12
+      },
+      "LGM747": {
+        "trend_slope": -1.3706293706293697,
+        "avg_monthly": 10.5,
+        "months_data": 12
+      },
+      "CPS1": {
+        "trend_slope": 4.065934065934066,
+        "avg_monthly": 20.384615384615383,
+        "months_data": 13
+      },
+      "LPC01": {
+        "trend_slope": 0.8727272727272727,
+        "avg_monthly": 7.7272727272727275,
+        "months_data": 11
+      },
+      "LSJ01": {
+        "trend_slope": -0.3986013986013988,
+        "avg_monthly": 15.5,
+        "months_data": 12
+      },
+      "CMSM06": {
+        "trend_slope": 20.44505494505495,
+        "avg_monthly": 125.0,
+        "months_data": 13
+      },
+      "LMX04": {
+        "trend_slope": 1.082417582417583,
+        "avg_monthly": 28.846153846153847,
+        "months_data": 13
+      },
+      "LPC02": {
+        "trend_slope": 0.6272727272727271,
+        "avg_monthly": 4.545454545454546,
+        "months_data": 11
+      },
+      "LPB01GR": {
+        "trend_slope": 0.11818181818181833,
+        "avg_monthly": 2.5454545454545454,
+        "months_data": 11
+      },
+      "JWS-0801": {
+        "trend_slope": 6.642857142857143,
+        "avg_monthly": 43.46153846153846,
+        "months_data": 13
+      },
+      "HS206C": {
+        "trend_slope": 3.203296703296705,
+        "avg_monthly": 30.46153846153846,
+        "months_data": 13
+      },
+      "LA11": {
+        "trend_slope": -0.09999999999999984,
+        "avg_monthly": 2.0,
+        "months_data": 9
+      },
+      "ACTL2.9": {
+        "trend_slope": -0.4999999999999997,
+        "avg_monthly": 2.0,
+        "months_data": 3
+      },
+      "LTF-02": {
+        "trend_slope": -2.563636363636363,
+        "avg_monthly": 12.545454545454545,
+        "months_data": 11
+      },
+      "LTF-01": {
+        "trend_slope": -2.0060606060606045,
+        "avg_monthly": 17.1,
+        "months_data": 10
+      },
+      "HD06": {
+        "trend_slope": -0.4499999999999999,
+        "avg_monthly": 7.333333333333333,
+        "months_data": 9
+      },
+      "HD10": {
+        "trend_slope": 0.023809523809523607,
+        "avg_monthly": 13.75,
+        "months_data": 8
+      },
+      "SM-618": {
+        "trend_slope": 10.000000000000002,
+        "avg_monthly": 13.666666666666666,
+        "months_data": 3
+      },
+      "D8507-E": {
+        "trend_slope": 1.797619047619048,
+        "avg_monthly": 25.875,
+        "months_data": 8
+      }
+    },
+    "monthly_data": [
+      {
+        "YearMonth": 

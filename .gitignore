@@ -1,0 +1,27 @@
+# Large data files
+data/collected/historical_data_2018_nov2024.csv
+data/collected/db_sales_cache.csv
+data/processed/enhanced_featured_data.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+
+# IDE files
+.vscode/
+.DS_Store
+
+# Model files (too large)
+*.pkl
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
